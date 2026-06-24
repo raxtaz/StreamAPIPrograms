@@ -3,9 +3,9 @@ import java.util.stream.*;
 
 public class Employee
 {
-	private int id;
-	private String name;
-	private double salary;
+	private final int id;
+	private final String name;
+	private final double salary;
 
 	public Employee(int id, String name, double salary)
 	{
@@ -35,7 +35,7 @@ public class Employee
 		return id + " " + name + " " + salary;
 	}
 
-	public static void main(String[] args)
+	static void main(String[] args)
 	{
 		Employee emp1 = new Employee(4, "Jacob", 3000);
 		Employee emp2 = new Employee(6, "Frank", 50000);

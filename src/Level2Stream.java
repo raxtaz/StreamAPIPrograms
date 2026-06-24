@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 public class Level2Stream
 {
-	public static void main(String[] args)
+	static void main(String[] args)
 	{
 		List<List<String>> customerOrders = Arrays.asList(
 				Arrays.asList("Laptop", "Mouse"),

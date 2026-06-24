@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 public class Level1Stream
 {
 	// Level 1: Beginner – Basic Filtering, Transforming, and Collection
-	public static void main(String[] args)
+	static void main(String[] args)
 	{
 		List<String> names = Arrays.asList("Alisha", "Bijoy", "Anamika", "ChandrA", "Aman", "Daman");
 
