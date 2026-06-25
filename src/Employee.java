@@ -1,33 +1,9 @@
 import java.util.*;
 import java.util.stream.*;
 
-public class Employee
+public record Employee(int id, String name, double salary)
 {
-	private final int id;
-	private final String name;
-	private final double salary;
 
-	public Employee(int id, String name, double salary)
-	{
-		this.id = id;
-		this.name = name;
-		this.salary = salary;
-	}
-
-	public int getId()
-	{
-		return id;
-	}
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public double getSalary()
-	{
-		return salary;
-	}
 
 	@Override
 	public String toString()
@@ -135,53 +111,53 @@ public class Employee
 
 		System.out.println("15. Highest Salary Employee:");
 		Employee highestSalaryEmp = employees.stream()
-				.max(Comparator.comparing(Employee :: getSalary))
+				.max(Comparator.comparing(Employee :: salary))
 				.orElse(null);
 		System.out.println(highestSalaryEmp);
 		System.out.println("==============\n");
 
 		System.out.println("16. Lowest Salary Employee:");
 		Employee lowestSalaryEmp = employees.stream()
-				.min(Comparator.comparing(Employee :: getSalary))
+				.min(Comparator.comparing(Employee :: salary))
 				.get();
 		System.out.println(lowestSalaryEmp);
 		System.out.println("==============\n");
 
 		System.out.println("17. Employees Sorted by Salary:");
 		employees.stream()
-				.sorted(Comparator.comparing(Employee :: getSalary))
+				.sorted(Comparator.comparing(Employee :: salary))
 				.forEach(System.out :: println);
 		System.out.println("==============\n");
 
 		System.out.println("18. Employees Sorted by Name:");
 		employees.stream()
-				.sorted(Comparator.comparing(Employee :: getName))
+				.sorted(Comparator.comparing(Employee :: name))
 				.forEach(System.out :: println);
 		System.out.println("==============\n");
 
 		System.out.println("19. Total Salary of All Employees:");
 		double totalSalary = employees.stream()
-				.mapToDouble(Employee :: getSalary)
+				.mapToDouble(Employee :: salary)
 				.sum();
 		System.out.println(totalSalary);
 		System.out.println("==============\n");
 
 		System.out.println("20. Employee Names:");
 		employees.stream()
-				.map(Employee :: getName)
+				.map(Employee :: name)
 				.forEach(System.out :: println);
 		System.out.println("==============\n");
 
 		System.out.println("21. Collected Names into List:");
 		List<String> names = employees.stream()
-				.map(Employee :: getName)
+				.map(Employee :: name)
 				.toList();
 		System.out.println(names);
 		System.out.println("==============\n");
 
 		System.out.println("22. Employees Grouped by Salary:");
 		Map<Double, List<Employee>> salaryGroups = employees.stream()
-				.collect(Collectors.groupingBy(Employee :: getSalary));
+				.collect(Collectors.groupingBy(Employee :: salary));
 		salaryGroups.forEach((salary, emps) -> System.out.println("Salary " + salary + ": " + emps));
 		System.out.println("==============\n");
 
@@ -192,13 +168,13 @@ public class Employee
 
 		System.out.println("24. Employees with Salary Greater than 40000:");
 		employees.stream()
-				.filter(e -> e.getSalary() > 40000)
+				.filter(e -> e.salary() > 40000)
 				.forEach(System.out :: println);
 		System.out.println("==============\n");
 
 		System.out.println("25. Second-Highest Salary Employee:");
 		Employee secondHighestEmp = employees.stream()
-				.sorted(Comparator.comparing(Employee :: getSalary).reversed())
+				.sorted(Comparator.comparing(Employee :: salary).reversed())
 				.skip(1)
 				.findFirst()
 				.get();
