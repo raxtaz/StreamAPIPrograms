@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Level4Stream
 {
-	public static void main(String[] args)
+	static void main(String[] args)
 	{
 		List<String> paragraphs = Arrays.asList(
 				"Java is a programming language.",
@@ -15,7 +15,7 @@ public class Level4Stream
 				"I love coding Java Streams API."
 		);
 
-		Map<String, Long> top3Words = (Map<String, Long>) paragraphs.stream()
+		Map<String, Long> top3Words = paragraphs.stream()
 				.flatMap(p -> Arrays.stream(p.toLowerCase().split("\\W+")))
 				.filter(word -> !word.isEmpty())
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))

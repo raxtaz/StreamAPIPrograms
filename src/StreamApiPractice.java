@@ -205,7 +205,7 @@ public class StreamApiPractice
 			List<List<String>> nestedWords = Arrays.asList(
 					Arrays.asList("hello", "world"),
 					Arrays.asList("stream", "api"),
-					Arrays.asList("java")
+					List.of("java")
 			);
 
 			List<String> flatWords = nestedWords.stream()
@@ -313,7 +313,7 @@ public class StreamApiPractice
 	}
 
 	// ============= MAIN METHOD =============
-	public static void main(String[] args)
+	static void main(String[] args)
 	{
 		Program1_FilterMap.main(null);
 		Program2_ReduceAggregation.main(null);
